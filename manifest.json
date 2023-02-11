@@ -1,0 +1,46 @@
+{
+   "author": "https://goby.app/",
+   "background": {
+      "page": "background.html",
+      "persistent": true
+   },
+   "browser_action": {
+      "default_icon": {
+         "128": "images/icon-128.png",
+         "16": "images/icon-16.png",
+         "32": "images/icon-32.png",
+         "48": "images/icon-48.png"
+      },
+      "default_popup": "popup.html",
+      "default_title": "goby"
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "webextension-polyfill.js", "content-script.js" ],
+      "matches": [ "file://*/*", "http://*/*", "https://*/*" ],
+      "run_at": "document_start"
+   }, {
+      "js": [ "vendor/trezor/trezor-content-script.js" ],
+      "matches": [ "*://connect.trezor.io/*/popup.html" ]
+   } ],
+   "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'",
+   "default_locale": "en",
+   "description": "__MSG_appDescription__",
+   "icons": {
+      "128": "images/icon-128.png",
+      "16": "images/icon-16.png",
+      "32": "images/icon-32.png",
+      "38": "images/icon-38.png",
+      "48": "images/icon-48.png",
+      "512": "images/icon-512.png",
+      "64": "images/icon-64.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwi2h+kdlq5c0QUJLTFXlqZ5TlmYffErprH6reuaSk3aP+nViySnK6UKywSh7AkHXyPTkxC57ZsISmzB/RfY4zqvHvTk6Q+HaLI3C2DE9A/jnF0SgC2ggNRNB769p16Ez3Ski9f5nnupdpwe63lX7QYWlLgCFdTDALotMeOxquMRcvPIZ0FCfuvFHWpVByBQR0N6LeufFfQ8K8WYTMFuouto0zjdyzBeHNg5/7VAK6kAFV3zvLPJzm8ecVtZYtfuNn5Ve762VeiCVqRSmbCEAcz/pGtA3wb34hmHLFEgwUmY2xPiWh1CSFK0vU5mzUC9qRFR6C11QtKQEwBZSEC4NEwIDAQAB",
+   "manifest_version": 2,
+   "name": "__MSG_appName__",
+   "permissions": [ "alarms", "storage", "activeTab", "notifications" ],
+   "short_name": "__MSG_appName__",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "0.3.0",
+   "web_accessible_resources": [ "user-media-permission.html" ]
+}
